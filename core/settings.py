@@ -36,7 +36,7 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 
 # FOR RENDER
 ALLOWED_HOSTS = os.environ.get("RENDER_EXTERNAL_HOSTNAME", default="127.0.0.1 [::1]").split()
-CSRF_TRUSTED_ORIGINS = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+CSRF_TRUSTED_ORIGINS = os.environ.get("RENDER_EXTERNAL_HOSTNAME", default=[])
 
 
 # CORS HEADERS
