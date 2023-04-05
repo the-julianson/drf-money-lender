@@ -8,7 +8,8 @@ from credit.api.viewsets import LoanRequestViewSet
 
 router = routers.DefaultRouter()
 
-router.register("loan-requests", LoanRequestViewSet, basename="loan-requests")
+router.register(r"credit", LoanRequestViewSet, basename="credit")
+
 
 urlpatterns = [
     path('api/', include(router.urls)),
