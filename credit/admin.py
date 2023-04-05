@@ -1,3 +1,9 @@
 from django.contrib import admin
+from credit.models import LoanRequest
 
-# Register your models here.
+
+class LoanRequestAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(LoanRequest, LoanRequestAdmin)

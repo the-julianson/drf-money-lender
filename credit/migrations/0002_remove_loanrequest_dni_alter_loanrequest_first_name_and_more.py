@@ -7,27 +7,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('credit', '0001_initial'),
+        ("credit", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='loanrequest',
-            name='dni',
+            model_name="loanrequest",
+            name="dni",
         ),
         migrations.AlterField(
-            model_name='loanrequest',
-            name='first_name',
+            model_name="loanrequest",
+            name="first_name",
             field=models.CharField(max_length=20),
         ),
         migrations.AlterField(
-            model_name='loanrequest',
-            name='last_name',
+            model_name="loanrequest",
+            name="last_name",
             field=models.CharField(max_length=30),
         ),
         migrations.AlterField(
-            model_name='loanrequest',
-            name='requested_amount',
-            field=models.PositiveIntegerField(validators=[django.core.validators.MinValueValidator(1000), django.core.validators.MaxValueValidator(310000)]),
+            model_name="loanrequest",
+            name="requested_amount",
+            field=models.PositiveIntegerField(
+                validators=[
+                    django.core.validators.MinValueValidator(1000),
+                    django.core.validators.MaxValueValidator(310000),
+                ]
+            ),
         ),
     ]
