@@ -1,10 +1,9 @@
 import pytest
-
-from factory import django, faker
-from credit.models import LoanRequest
-
 from django.contrib.auth import get_user_model
+from factory import django, faker
 from rest_framework.test import APIClient
+
+from credit.models import LoanRequest
 
 User = get_user_model()
 
@@ -35,17 +34,19 @@ def create_loan_request():
 @pytest.fixture(scope="session")
 def create_user():
     def _create_user(**kwargs):
-        return User.objects.create(email="staff@mail.com", is_staff=True, password="something", **kwargs)
+        return User.objects.create(
+            email="staff@mail.com", is_staff=True, password="something", **kwargs
+        )
 
     return _create_user
 
 
 @pytest.fixture(scope="session")
 def create_authenticated_client():
-
     def _create_authenticated_client(user):
         client = APIClient()
         client.force_login(user)
 
         return client
+
     return _create_authenticated_client

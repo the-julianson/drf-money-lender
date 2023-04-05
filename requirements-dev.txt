@@ -1,0 +1,11 @@
+-r requirements.txt
+
+pytest==7.1.2
+pytest-cov==3.0.0
+pytest-django==4.5.2
+ipdb==0.13.4
+jedi==0.18.2
+ipython
+black==22.6.0
+flake8==4.0.1
+isort==5.12.0

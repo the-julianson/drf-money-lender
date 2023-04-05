@@ -1,5 +1,4 @@
 import pytest
-
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -18,7 +17,7 @@ def test_create_loan_request():
         "last_name": "Fontana",
         "gender": "male",
         "email": "cacho.fontana@mail.com",
-        "requested_amount": 1200
+        "requested_amount": 1200,
     }
 
     client = APIClient()
@@ -27,6 +26,7 @@ def test_create_loan_request():
 
     assert response.status_code == status.HTTP_201_CREATED
     assert LoanRequest.objects.first().first_name == "Cacho"
+
 
 # DETAIL not True
 
@@ -42,7 +42,7 @@ def test_create_loan_request_fail():
         "last_name": "Fontana",
         "gender": "male",
         "email": "cacho.fontana@mail.com",
-        "requested_amount": 1200
+        "requested_amount": 1200,
     }
 
     client = APIClient()
@@ -54,7 +54,9 @@ def test_create_loan_request_fail():
 
 # list
 @pytest.mark.django_db
-def test_loan_request_list(create_loan_request, create_user, create_authenticated_client):
+def test_loan_request_list(
+    create_loan_request, create_user, create_authenticated_client
+):
 
     loan_request = create_loan_request()
 
@@ -70,7 +72,9 @@ def test_loan_request_list(create_loan_request, create_user, create_authenticate
 
 # Retrieve
 @pytest.mark.django_db
-def test_loan_request_retrieved_by_id(create_loan_request, create_user, create_authenticated_client):
+def test_loan_request_retrieved_by_id(
+    create_loan_request, create_user, create_authenticated_client
+):
 
     loan_request = create_loan_request()
 
@@ -85,16 +89,16 @@ def test_loan_request_retrieved_by_id(create_loan_request, create_user, create_a
 
 # Update
 @pytest.mark.django_db
-def test_loan_request_retrieved_by_id(create_loan_request, create_user, create_authenticated_client):
+def test_loan_request_update_by_id(
+    create_loan_request, create_user, create_authenticated_client
+):
 
     loan_request = create_loan_request()
 
     url = reverse("credit-detail", kwargs={"pk": loan_request.id})
     client = create_authenticated_client(create_user())
 
-    data = {
-        "approved": True
-    }
+    data = {"approved": True}
 
     response = client.patch(url, data, format="json")
 
@@ -105,7 +109,9 @@ def test_loan_request_retrieved_by_id(create_loan_request, create_user, create_a
 
 # Delete
 @pytest.mark.django_db
-def test_loan_request_is_deleted(create_loan_request, create_user, create_authenticated_client):
+def test_loan_request_is_deleted(
+    create_loan_request, create_user, create_authenticated_client
+):
 
     loan_request = create_loan_request()
 

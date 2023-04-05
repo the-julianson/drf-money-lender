@@ -1,5 +1,5 @@
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 
 # Create your models here.
 
@@ -10,7 +10,9 @@ class LoanRequest(models.Model):
     last_name = models.CharField(max_length=30)
     gender = models.CharField(max_length=10)
     email = models.EmailField()
-    requested_amount = models.PositiveIntegerField(validators=[MinValueValidator(1000), MaxValueValidator(310000)])
+    requested_amount = models.PositiveIntegerField(
+        validators=[MinValueValidator(1000), MaxValueValidator(310000)]
+    )
     approved = models.BooleanField(default=False)
 
     def __str__(self):
