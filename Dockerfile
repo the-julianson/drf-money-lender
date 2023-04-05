@@ -73,4 +73,9 @@ RUN chown -R app:app $HOME
 USER app
 
 # serve the application
-CMD gunicorn core.wsgi:application --bind 0.0.0.0:$PORT
+
+# FOR HEROKU
+# CMD gunicorn core.wsgi:application --bind 0.0.0.0:$PORT
+
+# FOR RENDER
+CMD ./start_app.sh
