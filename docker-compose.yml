@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 
 services:
 
@@ -12,10 +12,14 @@ services:
       - POSTGRES_DB=credit_db
 
   money_lender:
-    build: .
-    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    build:
+      context: .
+      dockerfile: Dockerfile
+#    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
     ports:
       - "8000:8000"
+    volumes:
+      - .:/home/app/web
     environment:
       - DATABASE_URL=postgresql://credit_user:credit_password@money_lender_db:5432/credit_db
     depends_on:

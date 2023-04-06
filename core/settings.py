@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get("DEBUG", default=0))
+DEBUG = int(os.environ.get("DEBUG", default=1))
 
 # FOR HEROKU
 # ALLOWED_HOSTS = os.environ.get(
@@ -35,9 +35,9 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 #  CSRF_TRUSTED_ORIGINS = ["https://drf-credit-scoring.herokuapp.com"]
 
 # FOR RENDER
-ALLOWED_HOSTS = os.environ.get("RENDER_EXTERNAL_HOSTNAME", default="127.0.0.1 [::1]").split()
+# ALLOWED_HOSTS = os.environ.get("RENDER_EXTERNAL_HOSTNAME", default="127.0.0.1 localhost [::1]").split()
 CSRF_TRUSTED_ORIGINS = os.environ.get("RENDER_EXTERNAL_HOSTNAME", default=[])
-
+ALLOWED_HOSTS = []
 
 # CORS HEADERS
 CORS_ORIGIN_ALLOW_ALL = bool(DEBUG)
